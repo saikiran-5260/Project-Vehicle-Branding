@@ -1,4 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using DomainLL.Model;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Vehicle_Branding.Model;
 
@@ -18,5 +19,7 @@ namespace Vehicle_Branding.Data
 
         public DbSet<VehicleAndTransmission> VehicleAndTransmissions { get; set; }
         public DbSet<VehicleAndTypeAndTransmissionAndColor> vehicleAndTypeAndTransmissionAndColors { get; set; }
+
+        public DbSet<VehicleAndColor> vehicleAndColors { get; set; }
     }
 }

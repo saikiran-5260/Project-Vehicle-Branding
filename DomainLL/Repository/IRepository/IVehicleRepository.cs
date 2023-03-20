@@ -1,4 +1,5 @@
-﻿using Vehicle_Branding.Model;
+﻿using DomainLL.Model.DTOS;
+using Vehicle_Branding.Model;
 using Vehicle_Branding.Model.DTOS;
 
 namespace Vehicle_Branding.DomainLL.Repository.IRepository
@@ -9,6 +10,7 @@ namespace Vehicle_Branding.DomainLL.Repository.IRepository
         List<VehicleAndTypeAndTransmissionAndColor> GetDetails();
         List<VehicleAndTypeDTO> GetDetails2();
         List<VehicleAndTransmissionDTO> GetDetails3();
+        List<VehicleAndColorDTO> GetDetails4();
         VehicleModelDTO CreateVehicle(VehicleModelDTO vehicle);
         VehicleType1DTO CreateVehicleType(VehicleType1DTO vehicleType);
         VehicleColorDTO CreateVehicleColor(VehicleColorDTO vehicleColor);

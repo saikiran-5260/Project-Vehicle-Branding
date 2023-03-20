@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using DomainLL.Model.DTOS;
 using Microsoft.EntityFrameworkCore;
 using Vehicle_Branding.Data;
 using Vehicle_Branding.DomainLL.Repository.IRepository;
@@ -162,6 +163,12 @@ namespace Vehicle_Branding.Repository
             _db.SaveChanges();
             return (_mapper.Map<VehicleColor, VehicleColorDTO>(vehicle));
 
+        }
+
+        public List<VehicleAndColorDTO> GetDetails4()
+        {
+            var vehicleAndColor = _db.vehicleAndColors.FromSqlRaw("getDetailsOfVehicleAndColor").ToList();
+            return (_mapper.Map<List<VehicleAndColorDTO>>(vehicleAndColor));
         }
     }
 }

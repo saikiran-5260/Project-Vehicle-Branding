@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DomainLL.Model.DTOS;
+using Microsoft.AspNetCore.Mvc;
 using Vehicle_Branding.Model;
 using Vehicle_Branding.Model.DTOS;
 using Vehicle_Branding.Services.IVehicle;
@@ -35,6 +36,13 @@ namespace Vehicle_Branding.Controllers
         {
             var vehicleAndType = _V.GetDetails3();
             return Ok(vehicleAndType);
+        }
+        [HttpGet]
+        [Route("ShowDetails4")]
+        public ActionResult<List<VehicleAndColorDTO>> ShowDetails4()
+        {
+            var vehicleAndColor = _V.GetDetails4();
+            return Ok(vehicleAndColor);
         }
     }
 }

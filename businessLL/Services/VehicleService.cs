@@ -2,6 +2,7 @@
 using Vehicle_Branding.Model.DTOS;
 using Vehicle_Branding.DomainLL.Repository.IRepository;
 using Vehicle_Branding.Services.IVehicle;
+using DomainLL.Model.DTOS;
 
 namespace Vehicle_Branding.Services
 {
@@ -82,6 +83,11 @@ namespace Vehicle_Branding.Services
         public List<VehicleAndTransmissionDTO> GetDetails3()
         {
             return(_V.GetDetails3());
+        }
+
+        public List<VehicleAndColorDTO> GetDetails4()
+        {
+            return (_V.GetDetails4());
         }
 
         public VehicleModelDTO GetVehcileByName(string name)
