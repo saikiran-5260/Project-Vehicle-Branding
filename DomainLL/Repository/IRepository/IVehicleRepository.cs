@@ -1,23 +1,24 @@
-﻿using DomainLL.Model.DTOS;
+﻿using DomainLL.Model;
+
 using Vehicle_Branding.Model;
-using Vehicle_Branding.Model.DTOS;
+
 
 namespace Vehicle_Branding.DomainLL.Repository.IRepository
 {
     public interface IVehicleRepository
     {
-        List<VehicleModelDTO> Get();
+        List<VehicleModel> Get();
         List<VehicleAndTypeAndTransmissionAndColor> GetDetails();
-        List<VehicleAndTypeDTO> GetDetails2();
-        List<VehicleAndTransmissionDTO> GetDetails3();
-        List<VehicleAndColorDTO> GetDetails4();
-        VehicleModelDTO CreateVehicle(VehicleModelDTO vehicle);
-        VehicleType1DTO CreateVehicleType(VehicleType1DTO vehicleType);
-        VehicleColorDTO CreateVehicleColor(VehicleColorDTO vehicleColor);
-        VehicleTransmissionDTO CreateVehicleTransmission(VehicleTransmissionDTO vehicle);
-        VehicleModelDTO UpdateVehicle(VehicleModelDTO vehicle,int id);
-        VehicleModelDTO GetVehcileByName(string name);
-        VehicleModelDTO GetVehcileByVINNum(string VINNum);
+        List<VehicleAndType> GetDetails2();
+        List<VehicleAndTransmission> GetDetails3();
+        List<VehicleAndColor> GetDetails4();
+        VehicleModel CreateVehicle(VehicleModel vehicle);
+        VehicleType1 CreateVehicleType(VehicleType1 vehicleType);
+        VehicleColor CreateVehicleColor(VehicleColor vehicleColor);
+        VehicleTransmission CreateVehicleTransmission(VehicleTransmission vehicle);
+        VehicleModel UpdateVehicle(VehicleModel vehicle,int id);
+        VehicleModel GetVehcileByName(string name);
+        VehicleModel GetVehcileByVINNum(string VINNum);
 
         string DeleteVehicle(int id);
 

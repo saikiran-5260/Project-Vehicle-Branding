@@ -1,10 +1,11 @@
 ﻿using AutoMapper;
-using DomainLL.Model.DTOS;
+using DomainLL.Model;
+//using DomainLL.Model.DTOS;
 using Microsoft.EntityFrameworkCore;
 using Vehicle_Branding.Data;
 using Vehicle_Branding.DomainLL.Repository.IRepository;
 using Vehicle_Branding.Model;
-using Vehicle_Branding.Model.DTOS;
+//using Vehicle_Branding.Model.DTOS;
 
 
 namespace Vehicle_Branding.Repository
@@ -18,42 +19,41 @@ namespace Vehicle_Branding.Repository
             _db = db;
             _mapper = mapper;
         }
-        public List<VehicleModelDTO> Get()
+        public List<VehicleModel> Get()
         {
             List<VehicleModel> vehicleModels1 = _db.Vehicles.ToList();
-            return (_mapper.Map<List<VehicleModelDTO>>(vehicleModels1));
+            return (vehicleModels1);
         }
-        public VehicleModelDTO GetVehcileByName(string name) 
+        public VehicleModel GetVehcileByName(string name) 
         {
             VehicleModel Vehicle = _db.Vehicles.FirstOrDefault(x=>x.VehicleName== name);
             if (Vehicle == null)
             {
                 return null;
             }
-            return (_mapper.Map< VehicleModelDTO>(Vehicle));
+            return (Vehicle);
 
         }
-        public VehicleModelDTO GetVehcileByVINNum(string VINNum)
+        public VehicleModel GetVehcileByVINNum(string VINNum)
         {
             VehicleModel Vehicle = _db.Vehicles.FirstOrDefault(x => x.VIN_number == VINNum);
             if (Vehicle == null)
             {
                 return null;
             }
-            return (_mapper.Map<VehicleModelDTO>(Vehicle));
+            return (Vehicle);
 
         }
-        public VehicleModelDTO CreateVehicle(VehicleModelDTO model)
+        public VehicleModel CreateVehicle(VehicleModel model)
         {
-            VehicleModel vehicle = _mapper.Map<VehicleModelDTO,VehicleModel>(model);
-            _db.Vehicles.Add(vehicle);
+            _db.Vehicles.Add(model);
             _db.SaveChanges();
-            return (_mapper.Map<VehicleModel,VehicleModelDTO>(vehicle));
+            return model;
         }
-        public VehicleModelDTO UpdateVehicle(VehicleModelDTO model,int id)
+        public VehicleModel UpdateVehicle(VehicleModel model,int id)
         {
-            VehicleModel vehicle = _mapper.Map<VehicleModelDTO,VehicleModel>(model);    
-            vehicle= _db.Vehicles.FirstOrDefault(x=>x.VehicleId==id);
+              
+            var vehicle= _db.Vehicles.FirstOrDefault(x=>x.VehicleId==id);
             if (vehicle != null)
             {
                 vehicle.VehicleId = id;
@@ -66,7 +66,7 @@ namespace Vehicle_Branding.Repository
             }
             _db.Vehicles.Update(vehicle);
             _db.SaveChanges();
-            return (_mapper.Map<VehicleModel, VehicleModelDTO>(vehicle));
+            return ((vehicle));
         }
 
         public List<VehicleAndTypeAndTransmissionAndColor> GetDetails()
@@ -101,7 +101,7 @@ namespace Vehicle_Branding.Repository
             return "Deleted Successfully";
         }
 
-        public List<VehicleAndTypeDTO> GetDetails2()
+        public List<VehicleAndType> GetDetails2()
         {
             var vehicleAndType1 = _db.VehicleAndTypes.FromSqlRaw("getdetails").ToList();
             //var vehicleAndType1 = (from Vehicles in _db.Vehicles
@@ -117,9 +117,9 @@ namespace Vehicle_Branding.Repository
             //                           MilegePerLiter = Vehicles.MilegePerLiter,
             //                           SeatingCapacity = Vehicles.SeatingCapacity,
             //                       }).ToList();
-            return (_mapper.Map<List<VehicleAndTypeDTO>>(vehicleAndType1));
+            return (vehicleAndType1);
         }
-        public List<VehicleAndTransmissionDTO> GetDetails3()
+        public List<VehicleAndTransmission> GetDetails3()
         {
             var vehiclesAndTransmission = _db.VehicleAndTransmissions.FromSqlRaw("GetDetailsOfVehiclesAndTransmission").ToList();
             //var vehicleAndType1 = (from Vehicles in _db.Vehicles
@@ -136,39 +136,36 @@ namespace Vehicle_Branding.Repository
             //                           SeatingCapacity = Vehicles.SeatingCapacity,
             //                       }).ToList();
             //return vehicleAndType1;
-            return (_mapper.Map<List<VehicleAndTransmissionDTO>>(vehiclesAndTransmission));
+            return (vehiclesAndTransmission);
         }
-        public VehicleTransmissionDTO CreateVehicleTransmission(VehicleTransmissionDTO vehicle)
+        public VehicleTransmission CreateVehicleTransmission(VehicleTransmission vehicle)
         {
-            VehicleTransmission vehicleTransmission = _mapper.Map<VehicleTransmissionDTO, VehicleTransmission>(vehicle);
-            _db.VehicleTransmission.Add(vehicleTransmission);
+            
+            _db.VehicleTransmission.Add(vehicle);
             _db.SaveChanges();
-            return (_mapper.Map<VehicleTransmission, VehicleTransmissionDTO>(vehicleTransmission));
+            return (vehicle);
         }
 
-        public VehicleType1DTO CreateVehicleType(VehicleType1DTO vehicleType)
+        public VehicleType1 CreateVehicleType(VehicleType1 vehicleType)
         {
-            VehicleType1 vehicleType1 = _mapper.Map<VehicleType1DTO,VehicleType1>(vehicleType);
-            _db.VehicleType1.Add(vehicleType1);
+            _db.VehicleType1.Add(vehicleType);
             _db.SaveChanges();
-            VehicleType1DTO vehicleType12 = _mapper.Map<VehicleType1,VehicleType1DTO>(vehicleType1);
-            return (vehicleType12);
-
+            return (vehicleType);
         }
 
-        public VehicleColorDTO CreateVehicleColor(VehicleColorDTO vehicleColor)
+        public VehicleColor CreateVehicleColor(VehicleColor vehicleColor)
         {
-            VehicleColor vehicle = _mapper.Map<VehicleColorDTO, VehicleColor>(vehicleColor);
-            _db.VehicleColors.Add(vehicle);
+            
+            _db.VehicleColors.Add(vehicleColor);
             _db.SaveChanges();
-            return (_mapper.Map<VehicleColor, VehicleColorDTO>(vehicle));
+            return (vehicleColor);
 
         }
 
-        public List<VehicleAndColorDTO> GetDetails4()
+        public List<VehicleAndColor> GetDetails4()
         {
             var vehicleAndColor = _db.vehicleAndColors.FromSqlRaw("getDetailsOfVehicleAndColor").ToList();
-            return (_mapper.Map<List<VehicleAndColorDTO>>(vehicleAndColor));
+            return (vehicleAndColor);
         }
     }
 }
