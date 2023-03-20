@@ -17,28 +17,28 @@ namespace Vehicle_Branding.Controllers
         }
 
         [HttpGet]
-        [Route("ShowDetails1")]
+        [Route("VehicleAndTypeAndTransmissionAndColor")]
         public ActionResult<List<VehicleAndTypeAndTransmissionAndColor>> ShowDetails1()
         {
             var vehicleAndTypeAndColor = _V.GetDetails();
             return Ok(vehicleAndTypeAndColor);
         }
         [HttpGet]
-        [Route("ShowDetails2")]
+        [Route("VehicleAndTypeDTO")]
         public ActionResult<List<VehicleAndTypeDTO>> ShowDetails2()
         {
             var vehicleAndType = _V.GetDetails2();
             return Ok(vehicleAndType);
         }
         [HttpGet]
-        [Route("ShowDetails3")]
+        [Route("VehicleAndTransmissionDTO")]
         public ActionResult<List<VehicleAndTransmissionDTO>> ShowDetails3()
         {
             var vehicleAndType = _V.GetDetails3();
             return Ok(vehicleAndType);
         }
         [HttpGet]
-        [Route("ShowDetails4")]
+        [Route("VehicleAndColorDTO")]
         public ActionResult<List<VehicleAndColorDTO>> ShowDetails4()
         {
             var vehicleAndColor = _V.GetDetails4();

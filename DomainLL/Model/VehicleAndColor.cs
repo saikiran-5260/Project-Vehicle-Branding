@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace DomainLL.Model
 {
+    [Keyless]
     public class VehicleAndColor
     {
-        [Key]
         public int VehicleId { get; set; }
         public string VehicleName { get; set; }
         public string VIN_number { get; set; }

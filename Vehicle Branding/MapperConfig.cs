@@ -19,7 +19,7 @@ namespace Vehicle_Branding
                 config.CreateMap<VehicleModel, VehicleModelDTO>().ReverseMap();
                 config.CreateMap<VehicleTransmission,VehicleTransmissionDTO>().ReverseMap();
                 config.CreateMap<VehicleType1,VehicleType1DTO>().ReverseMap();
-                config.CreateMap<VehicleAndColor, VehicleAndColorDTO>().ReverseMap();
+                config.CreateMap<VehicleAndColor,VehicleAndColorDTO>().ReverseMap();
             });
             return mapper;
         }
