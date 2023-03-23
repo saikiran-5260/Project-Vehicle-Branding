@@ -21,9 +21,9 @@ namespace Vehicle_Branding.Controllers
         
         [HttpGet]
         [Route("ShowDetails")]
-        public ActionResult<List<VehicleModelDTO>> ShowDetails()
+        public async Task<ActionResult<List<VehicleModelDTO>>> ShowDetails()
         {
-            var vehicleModels = _V.Get();
+            var vehicleModels =   _V.Get();
             return Ok(vehicleModels);
         }
         
